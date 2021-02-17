@@ -1,0 +1,32 @@
+<section>
+    <article>
+        <header>
+            <h2>{{titulo}}</h2>
+        </header>
+        <p>{{conteudo}}</p>
+        <br>
+        <hr>
+        <br>
+        {% if comentarios == false %}
+            <p>Nenhum comentários nessa postagem.</p>
+        {% else %}
+            {% for coment in comentarios %}
+                <h3>{{coment.nome}}</h3>
+                <p>{{coment.mensagem}}</p>
+                <br>
+            {% endfor %}
+        {% endif %}
+        <form action="http://localhost/MVC/index.php?pagina=post&metodo=addComent" method="post">
+            <span>Nome</span><br>
+            <input type="text" name="nome"><br><br>
+        
+            <span>Comentário</span><br>
+            <textarea name="mensagem"></textarea><br><br>
+        
+            <input type="hidden" name="id" value="{{id}}">
+
+            <input type="submit" value="Comentar">
+        </form>
+        <br>
+    </article>
+</section>
